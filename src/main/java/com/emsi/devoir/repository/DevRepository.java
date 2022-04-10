@@ -16,6 +16,6 @@ public interface DevRepository extends JpaRepository<Developper, Integer> {
 
     public Developper getByEmail(@Param("email") String email);
 
-    @Query("SELECT d from Developper d JOIN d.taches t on t.project.id = :idProject")
+    @Query("SELECT DISTINCT(d) from Developper d JOIN d.taches t on t.project.id = :idProject")
     public List<Developper> getByProject(@Param("idProject") Integer idProject);
 }
